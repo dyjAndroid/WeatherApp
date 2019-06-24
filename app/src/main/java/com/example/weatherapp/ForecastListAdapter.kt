@@ -15,7 +15,7 @@ import com.example.weatherapp.extensions.ctx
  * created by Sunday
  * on 2019-06-24 14:33
  */
-class ForecastListAdapter(private val weekForecast: ForecastList, private val itemClick: OnItemClickListener) :
+class ForecastListAdapter(private val weekForecast: ForecastList, private val itemClick: (Forecast) -> Unit) :
     RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,11 +29,7 @@ class ForecastListAdapter(private val weekForecast: ForecastList, private val it
         holder.bindForecast(weekForecast[position])
     }
 
-    interface OnItemClickListener {
-        operator fun invoke(forecast: Forecast)
-    }
-
-    class ViewHolder(private val view: View, val itemClick: OnItemClickListener) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(private val view: View, val itemClick: (Forecast) -> Unit) : RecyclerView.ViewHolder(view) {
 
         private val iconView: ImageView = view.findViewById(R.id.icon)
         private val dateView: TextView = view.findViewById(R.id.dateText)
