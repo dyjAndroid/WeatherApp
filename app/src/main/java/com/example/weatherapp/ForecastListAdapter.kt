@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.weatherapp.domain.model.Forecast
 import com.example.weatherapp.domain.model.ForecastList
 import com.example.weatherapp.extensions.ctx
+import kotlinx.android.synthetic.main.item_forecast.view.*
 
 /**
  * created by Sunday
@@ -31,19 +32,13 @@ class ForecastListAdapter(private val weekForecast: ForecastList, private val it
 
     class ViewHolder(private val view: View, val itemClick: (Forecast) -> Unit) : RecyclerView.ViewHolder(view) {
 
-        private val iconView: ImageView = view.findViewById(R.id.icon)
-        private val dateView: TextView = view.findViewById(R.id.dateText)
-        private val descriptionView: TextView = view.findViewById(R.id.descriptionText)
-        private val maxTemperatureView: TextView = view.findViewById(R.id.maxTemperature)
-        private val minTemperatureView: TextView = view.findViewById(R.id.minTemperature)
-
         fun bindForecast(forecast: Forecast) {
             with(forecast) {
-                Glide.with(view.ctx).load(iconUrl).into(iconView)
-                dateView.text = date
-                descriptionView.text = description
-                maxTemperatureView.text = "$high"
-                minTemperatureView.text = "$low"
+                Glide.with(view.ctx).load(iconUrl).into(view.icon)
+                view.dateText.text = date
+                view.descriptionText.text = description
+                view.maxTemperature.text = "$high"
+                view.minTemperature.text = "$low"
                 view.setOnClickListener {
                     itemClick(forecast)
                 }
