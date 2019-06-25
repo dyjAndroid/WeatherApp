@@ -1,7 +1,7 @@
 package com.example.weatherapp.ui
 
 import android.app.Application
-import kotlin.properties.Delegates
+import com.example.weatherapp.extensions.DelegatesExt
 
 /**
  * created by Sunday
@@ -10,7 +10,7 @@ import kotlin.properties.Delegates
 class App : Application() {
 
     companion object {
-        var instance: App by Delegates.notNull()
+        var instance: App by DelegatesExt.notNullSingleValue()
     }
 
     override fun onCreate() {
