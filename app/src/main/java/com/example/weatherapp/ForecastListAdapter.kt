@@ -35,7 +35,7 @@ class ForecastListAdapter(private val weekForecast: ForecastList, private val it
         fun bindForecast(forecast: Forecast) {
             with(forecast) {
                 Glide.with(view.ctx).load(iconUrl).into(view.icon)
-                view.dateText.text = date
+                view.dateText.text = date.toString()
                 view.descriptionText.text = description
                 view.maxTemperature.text = "$high"
                 view.minTemperature.text = "$low"
