@@ -1,5 +1,6 @@
 package com.example.weatherapp.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,9 @@ import com.example.weatherapp.R
 import com.example.weatherapp.domain.model.Forecast
 import com.example.weatherapp.domain.model.ForecastList
 import com.example.weatherapp.extensions.ctx
+import com.example.weatherapp.extensions.toDateString
 import kotlinx.android.synthetic.main.item_forecast.view.*
+import java.text.DateFormat
 
 /**
  * created by Sunday
@@ -34,7 +37,7 @@ class ForecastListAdapter(private val weekForecast: ForecastList, private val it
         fun bindForecast(forecast: Forecast) {
             with(forecast) {
                 Glide.with(view.ctx).load(iconUrl).into(view.icon)
-                view.dateText.text = date.toString()
+                view.dateText.text = date.toDateString(DateFormat.FULL)
                 view.descriptionText.text = description
                 view.maxTemperature.text = "$high"
                 view.minTemperature.text = "$low"
