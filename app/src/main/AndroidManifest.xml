@@ -14,12 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/WeatherAppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.activities.DetailActivity"
+        <activity android:name=".ui.activities.SettingsActivity"
+            android:label="@string/settings"/>
+        <activity
+            android:name=".ui.activities.DetailActivity"
             android:parentActivityName=".ui.activities.MainActivity"
             tools:targetApi="jelly_bean">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.activities.MainActivity"/>
+                android:value=".ui.activities.MainActivity" />
         </activity>
         <activity android:name=".ui.activities.MainActivity">
             <intent-filter>
